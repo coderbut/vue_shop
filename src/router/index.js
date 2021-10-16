@@ -4,6 +4,7 @@ import Login from "../components/Login.vue";
 import Home from "../components/Home";
 import Welcome from "../components/Welcome.vue";
 import Users from "../components/user/Users";
+import Rights from "../components/power/Rights";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ const routes = [
       {
         path: "/users",
         component: Users
+      },
+      // 权限管理页面
+      {
+        path: "/rights",
+        component: Rights
       }
     ]
   }
