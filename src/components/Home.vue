@@ -100,7 +100,7 @@ export default {
         return this.$message.console.error(res.meta.msg);
       // 将获取到的左侧菜单数据保存到meunlist中
       this.meunlist = res.data;
-      console.log(res);
+      // console.log(res);
     },
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
