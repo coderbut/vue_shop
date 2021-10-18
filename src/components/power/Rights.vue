@@ -10,7 +10,7 @@
     <el-card>
       <el-table :data="rightsList" border stripe>
         <!-- 索引列 -->
-        <el-table-column type="index"></el-table-column>
+        <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column label="权限名称" prop="authName"></el-table-column>
         <el-table-column label="路径" prop="path"></el-table-column>
         <el-table-column label="权限等级" prop="level">
