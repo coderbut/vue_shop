@@ -11,74 +11,74 @@
       <el-row>
         <el-col>
           <el-button type="primary" @click="showAddCatDialog"
-            >添加分类
+          >添加分类
           </el-button>
         </el-col>
       </el-row>
       <!-- 表格 -->
       <tree-table
-        :data="cateList"
         :columns="columns"
-        :selection-type="false"
+        :data="cateList"
         :expand-type="false"
-        show-index
-        border
+        :selection-type="false"
         :show-row-hover="false"
+        border
         class="treeTable"
+        show-index
       >
         <!-- 是否有效模板 -->
         <template slot="isOk" slot-scope="scope">
           <i
+            v-if="scope.row.cat_deleted === false"
             class="el-icon-success"
             style="color: lightgreen"
-            v-if="scope.row.cat_deleted === false"
           ></i>
-          <i class="el-icon-error" style="color: red" v-else></i>
+          <i v-else class="el-icon-error" style="color: red"></i>
         </template>
         <!-- 排序模板 -->
         <template slot="order" slot-scope="scope">
-          <el-tag size="mini" v-if="scope.row.cat_level === 0">一级</el-tag>
+          <el-tag v-if="scope.row.cat_level === 0" size="mini">一级</el-tag>
           <el-tag
+            v-else-if="scope.row.cat_level === 1"
             size="mini"
             type="success"
-            v-else-if="scope.row.cat_level === 1"
-            >二级
+          >二级
           </el-tag>
-          <el-tag size="mini" type="warning" v-else>三级</el-tag>
+          <el-tag v-else size="mini" type="warning">三级</el-tag>
         </template>
         <!-- 操作模板 -->
         <template slot="opt" slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini"
-            >编辑
+          <el-button icon="el-icon-edit" size="mini" type="primary"
+          >编辑
           </el-button>
-          <el-button type="danger" icon="el-icon-delete" size="mini"
-            >删除
+          <el-button icon="el-icon-delete" size="mini" type="danger"
+          >删除
           </el-button>
         </template>
       </tree-table>
       <!-- 分页区域 -->
       <el-pagination
+        :current-page="queryInfo.pagenum"
+        :page-size="queryInfo.pagesize"
+        :page-sizes="[5, 10, 15]"
+        :total="total"
+        layout="total, sizes, prev, pager, next, jumper"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="queryInfo.pagenum"
-        :page-sizes="[5, 10, 15]"
-        :page-size="queryInfo.pagesize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="total"
       >
       </el-pagination>
       <!-- 添加分类对话框 -->
       <el-dialog
-        title="添加分类"
         :visible.sync="addCatDialogVisible"
+        title="添加分类"
         width="50%"
         @close="addCateDialogClosed"
       >
         <!-- 添加分类表单 -->
         <el-form
+          ref="addCateFormRef"
           :model="addCateForm"
           :rules="addCateFormRules"
-          ref="addCateFormRef"
           label-width="100px"
         >
           <el-form-item label="分类名称" prop="cat_name">
@@ -89,9 +89,9 @@
               v-model="selectedKeys"
               :options="parentCateList"
               :props="cascaderProps"
-              @change="parentCateChanged"
-              placeholder="不选择默认添加一级分类"
               clearable
+              placeholder="不选择默认添加一级分类"
+              @change="parentCateChanged"
             ></el-cascader>
           </el-form-item>
         </el-form>
@@ -100,6 +100,8 @@
           <el-button type="primary" @click="addcate">确 定</el-button>
         </span>
       </el-dialog>
+      <!-- TODO 编辑分类功能待开发  -->
+      <!-- TODO 删除分类功能待开发 -->
     </el-card>
   </div>
 </template>
@@ -184,7 +186,7 @@ export default {
   methods: {
     // 获取商品分类数据
     async getcateList() {
-      const { data: res } = await this.$http.get("categories", {
+      const {data: res} = await this.$http.get("categories", {
         params: this.queryInfo
       });
       if (res.meta.status !== 200) {
@@ -212,8 +214,8 @@ export default {
     },
     // 获取父级分类的数据列表
     async getParentCateList() {
-      const { data: res } = await this.$http.get("categories", {
-        params: { type: 2 }
+      const {data: res} = await this.$http.get("categories", {
+        params: {type: 2}
       });
       if (res.meta.status !== 200) {
         return this.$message.error("获取父级分类列表失败！");
@@ -226,11 +228,12 @@ export default {
       if (this.selectedKeys.length > 0) {
         // 如果长度不为 0 ，则证明选择了分类，取数组的最后一位，即所选择的最后一级分类
         this.addCateForm.cat_pid = this.selectedKeys[
-          this.selectedKeys.length - 1
-        ];
+        this.selectedKeys.length - 1
+          ];
         // 为当前分类等级赋值
         this.addCateForm.cat_level = this.selectedKeys.length;
-      } else {
+      }
+      else {
         this.addCateForm.cat_pid = 0;
         this.addCateForm.cat_level = 0;
       }
@@ -240,7 +243,7 @@ export default {
       // 提交前预校验
       this.$refs.addCateFormRef.validate(async validate => {
         if (!validate) return;
-        const { data: res } = await this.$http.post(
+        const {data: res} = await this.$http.post(
           "categories",
           this.addCateForm
         );
@@ -263,14 +266,9 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .treeTable {
   margin-top: 15px;
-}
-
-.el-cascader-menu {
-  height: 300px;
-  width: 200px;
 }
 
 .el-cascader {

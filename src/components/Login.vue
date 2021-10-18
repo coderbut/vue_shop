@@ -2,14 +2,14 @@
   <div class="login_container">
     <div class="login_box">
       <!-- 头像 -->
-      <div class="avatar_box"><img src="../assets/logo.png" alt="" /></div>
+      <div class="avatar_box"><img alt="" src="../assets/logo.png"/></div>
       <!-- 活动区域 -->
       <el-form
         ref="loginFormRef"
         :model="loginForm"
         :rules="loginFormRules"
-        label-width="0px"
         class="login_form"
+        label-width="0px"
       >
         <!-- 用户名 -->
         <el-form-item prop="username">
@@ -20,7 +20,8 @@
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password"
-          ><el-input
+        >
+          <el-input
             v-model="loginForm.password"
             prefix-icon="iconfont icon-lock_fill"
             type="password"
@@ -88,7 +89,7 @@ export default {
       this.$refs.loginFormRef.validate(async vaild => {
         if (!vaild) return;
         // 解构返回值
-        const { data: res } = await this.$http.post("login", this.loginForm);
+        const {data: res} = await this.$http.post("login", this.loginForm);
         if (res.meta.status !== 200) return this.$message.error("登录失败");
         this.$message.success("登录成功");
         // console.log(res);

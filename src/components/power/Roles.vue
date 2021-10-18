@@ -21,14 +21,14 @@
           <template slot-scope="scope">
             <!-- 为第一行添加上边框线，以及为每一行添加下边框线 -->
             <el-row
-              :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']"
               v-for="(item1, i1) in scope.row.children"
               :key="item1.id"
+              :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']"
             >
               <!-- 渲染一级权限 -->
               <el-col :span="5">
                 <el-tag closable @close="removeRightById(scope.row, item1.id)"
-                  >{{ item1.authName }}
+                >{{ item1.authName }}
                 </el-tag>
                 <i class="el-icon-caret-right"></i>
               </el-col>
@@ -42,10 +42,11 @@
                 >
                   <el-col :span="6">
                     <el-tag
-                      type="success"
                       closable
+                      type="success"
                       @close="removeRightById(scope.row, item2.id)"
-                      >{{ item2.authName }}</el-tag
+                    >{{ item2.authName }}
+                    </el-tag
                     >
                     <i class="el-icon-caret-right"></i>
                   </el-col>
@@ -54,8 +55,8 @@
                     <el-tag
                       v-for="item3 in item2.children"
                       :key="item3.id"
-                      type="warning"
                       closable
+                      type="warning"
                       @close="removeRightById(scope.row, item3.id)"
                     >
                       {{ item3.authName }}
@@ -73,25 +74,28 @@
         <el-table-column label="操作" width="300px">
           <template slot-scope="scope">
             <el-button
-              type="primary"
-              size="mini"
               icon="el-icon-edit"
+              size="mini"
+              type="primary"
               @click="editRole"
-              >编辑</el-button
+            >编辑
+            </el-button
             >
             <el-button
-              type="danger"
-              size="mini"
               icon="el-icon-delete"
+              size="mini"
+              type="danger"
               @click="removeRole"
-              >删除</el-button
+            >删除
+            </el-button
             >
             <el-button
-              type="warning"
-              size="mini"
               icon="el-icon-setting"
+              size="mini"
+              type="warning"
               @click="showSetRightDialog(scope.row)"
-              >分配权限</el-button
+            >分配权限
+            </el-button
             >
           </template>
         </el-table-column>
@@ -99,20 +103,20 @@
     </el-card>
     <!-- 分配权限对话框 -->
     <el-dialog
-      title="分配权限"
       :visible.sync="setRightDialogVisible"
+      title="分配权限"
       width="50%"
       @close="closeRightDialog"
     >
       <!-- 树形权限列表 -->
       <el-tree
-        :data="rightList"
-        :props="treeProps"
-        show-checkbox
-        node-key="id"
-        default-expand-all
-        :default-checked-keys="defKeys"
         ref="treeRef"
+        :data="rightList"
+        :default-checked-keys="defKeys"
+        :props="treeProps"
+        default-expand-all
+        node-key="id"
+        show-checkbox
       ></el-tree>
       <span slot="footer" class="dialog-footer">
         <el-button @click="setRightDialogVisible = false">取 消</el-button>
@@ -148,16 +152,18 @@ export default {
   methods: {
     // 获取所有角色
     async getRolesList() {
-      const { data: res } = await this.$http.get("roles");
+      const {data: res} = await this.$http.get("roles");
       // console.log(res);
       if (res.meta.status !== 200)
         return this.$message.error("获取角色列表失败！");
       this.rolesList = res.data;
     },
     // 编辑角色
-    editRole() {},
+    editRole() {
+    },
     // 删除角色
-    removeRole() {},
+    removeRole() {
+    },
     // 根据 id 删除对应的权限
     async removeRightById(role, rightId) {
       // 弹窗提示用户是否删除
@@ -171,7 +177,7 @@ export default {
         }
       ).catch(err => err);
       if (confirmResult !== "confirm") return this.$message.info("取消删除！");
-      const { data: res } = await this.$http.delete(
+      const {data: res} = await this.$http.delete(
         "roles/" + role.id + "/rights/" + rightId
       );
       if (res.meta.status !== 200) return this.$message.error("删除权限失败！");
@@ -182,7 +188,7 @@ export default {
     async showSetRightDialog(role) {
       this.roleId = role.id;
       // 获取所有权限数据（树形）
-      const { data: res } = await this.$http.get("rights/tree");
+      const {data: res} = await this.$http.get("rights/tree");
       if (res.meta.status !== 200)
         return this.$message.error("获取权限列表失败！");
       // 获取权限数据并保存到 data 中
@@ -211,9 +217,9 @@ export default {
         ...this.$refs.treeRef.getHalfCheckedKeys()
       ];
       const idStr = keys.join(",");
-      const { data: res } = await this.$http.post(
+      const {data: res} = await this.$http.post(
         "roles/" + this.roleId + "/rights",
-        { rids: idStr }
+        {rids: idStr}
       );
       if (res.meta.status !== 200)
         return this.$message.error("更改用户权限失败！");
@@ -230,12 +236,15 @@ export default {
 .el-tag {
   margin: 7px;
 }
+
 .bdtop {
   border-top: 1px solid #eee;
 }
+
 .bdbottom {
   border-bottom: 1px solid #eee;
 }
+
 // 使下拉菜单中的权限垂直居中对齐
 .vcenter {
   display: flex;

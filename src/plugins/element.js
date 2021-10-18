@@ -1,35 +1,38 @@
 import Vue from "vue";
 import {
-  Button,
-  Form,
-  FormItem,
-  Input,
-  Message,
-  Container,
-  Header,
+  Alert,
   Aside,
-  Main,
-  Menu,
-  Submenu,
-  MenuItemGroup,
-  MenuItem,
   Breadcrumb,
   BreadcrumbItem,
+  Button,
   Card,
+  Cascader,
   Col,
+  Container,
+  Dialog,
+  Form,
+  FormItem,
+  Header,
+  Input,
+  Main,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Message,
+  MessageBox,
+  Option,
+  Pagination,
   Row,
+  Select,
+  Submenu,
+  Switch,
   Table,
   TableColumn,
-  Switch,
-  Tooltip,
-  Pagination,
-  Dialog,
-  MessageBox,
+  TabPane,
+  Tabs,
   Tag,
-  Tree,
-  Select,
-  Option,
-  Cascader
+  Tooltip,
+  Tree
 } from "element-ui";
 
 Vue.use(Button);
@@ -60,6 +63,9 @@ Vue.use(Tree);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Cascader);
+Vue.use(Alert);
+Vue.use(Tabs);
+Vue.use(TabPane);
 
 // 挂载到Vue原型上
 Vue.prototype.$message = Message;

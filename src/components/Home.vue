@@ -4,7 +4,7 @@
     <el-header>
       <div>
         <!-- logo -->
-        <img src="../assets/heima.png" alt="" />
+        <img alt="" src="../assets/heima.png"/>
         <span>电商后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
@@ -19,20 +19,20 @@
         <!-- 控制菜单整体的折叠展开 -->
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <el-menu
-          background-color="#333744"
-          text-color="#fff"
-          active-text-color="#409eff"
-          :unique-opened="true"
           :collapse="isCollapse"
           :collapse-transition="false"
-          :router="true"
           :default-active="activePath"
+          :router="true"
+          :unique-opened="true"
+          active-text-color="#409eff"
+          background-color="#333744"
+          text-color="#fff"
         >
           <!-- 一级菜单 -->
           <el-submenu
-            :index="item.id + ''"
-            :key="item.id"
             v-for="item in meunlist"
+            :key="item.id"
+            :index="item.id + ''"
           >
             <!-- 一级菜单的模板区域 -->
             <template slot="title">
@@ -44,9 +44,9 @@
             </template>
             <!-- 二级菜单 -->
             <el-menu-item
-              :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
+              :index="'/' + subItem.path"
               @click="saveNavState('/' + subItem.path)"
             >
               <i class="el-icon-menu"></i>
@@ -95,7 +95,7 @@ export default {
       this.$router.push("/login");
     },
     async getMenuList() {
-      const { data: res } = await this.$http.get("menus");
+      const {data: res} = await this.$http.get("menus");
       if (res.meta.status !== 200)
         return this.$message.console.error(res.meta.msg);
       // 将获取到的左侧菜单数据保存到meunlist中
@@ -118,6 +118,7 @@ export default {
 .home-container {
   height: 100%;
 }
+
 .el-header {
   background-color: #373d41;
   display: flex;
@@ -136,6 +137,7 @@ export default {
     }
   }
 }
+
 .el-aside {
   background-color: #333744;
 
@@ -144,12 +146,15 @@ export default {
     border-right: none;
   }
 }
+
 .el-main {
   background-color: #eaedf1;
 }
+
 .iconfont {
   margin-right: 10px;
 }
+
 .toggle-button {
   background-color: #4a5064;
   font-size: 10px;
