@@ -263,7 +263,7 @@ export default {
           return this.$message.error("添加参数失败！");
         this.$message.success("添加参数成功");
         this.addDialogVisible = false;
-        this.getParamsData();
+        await this.getParamsData();
       });
     },
     // 修改对话框显隐

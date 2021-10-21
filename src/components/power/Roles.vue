@@ -277,7 +277,6 @@ export default {
         this.editRolesVisible = false;
       });
     },
-    closeRolesDialog() {},
     // 删除角色
     async removeRole(id) {
       const deleteConfirm = await this.$confirm(
