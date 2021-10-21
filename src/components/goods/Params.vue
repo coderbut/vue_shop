@@ -158,7 +158,7 @@ export default {
         expandTrigger: "hover",
         value: "cat_id",
         label: "cat_name",
-        children: "children"
+        children: "children",
       },
       // 级联选择器绑定的双向数组
       selectedCateKeys: [],
@@ -172,7 +172,7 @@ export default {
       addDialogVisible: false,
       // 添加参数的表单验证对象
       addForm: {
-        attr_name: ""
+        attr_name: "",
       },
       // 表单验证规则对象
       addFormRules: {
@@ -180,23 +180,23 @@ export default {
           {
             required: true,
             message: "请输入参数名称",
-            trigger: "blur"
-          }
-        ]
+            trigger: "blur",
+          },
+        ],
       },
       editDialogVisible: false,
       editForm: {
-        attr_name: ""
+        attr_name: "",
       },
       editFormRules: {
         attr_name: [
           {
             required: true,
             message: "请输入参数名称",
-            trigger: "blur"
-          }
-        ]
-      }
+            trigger: "blur",
+          },
+        ],
+      },
     };
   },
   created() {
@@ -233,8 +233,8 @@ export default {
         `categories/${this.cateId}/attributes`,
         {
           params: {
-            sel: this.activeName
-          }
+            sel: this.activeName,
+          },
         }
       );
       if (res.meta.status !== 200) return this.$message.error("获取参数失败！");
@@ -250,13 +250,13 @@ export default {
     },
     // 点击按钮添加参数
     addParams() {
-      this.$refs.addFormRef.validate(async valid => {
+      this.$refs.addFormRef.validate(async (valid) => {
         if (!valid) return;
         const { data: res } = await this.$http.post(
           `categories/${this.cateId}/attributes`,
           {
             attr_name: this.addForm.attr_name,
-            attr_sel: this.activeName
+            attr_sel: this.activeName,
           }
         );
         if (res.meta.status !== 201)
@@ -274,7 +274,7 @@ export default {
       this.$refs.editFormRef.resetFields();
     },
     // 修改参数信息
-    editParams() {}
+    editParams() {},
   },
   computed: {
     // 如果按钮需要被禁用，返回true
@@ -291,8 +291,8 @@ export default {
     titleText() {
       if (this.activeName === "many") return "动态参数";
       else return "静态属性";
-    }
-  }
+    },
+  },
 };
 </script>
 
