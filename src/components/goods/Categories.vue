@@ -55,7 +55,12 @@
             @click="showEditCateDialog(scope.row.cat_id)"
             >编辑
           </el-button>
-          <el-button icon="el-icon-delete" size="mini" type="danger"
+          <!-- TODO 删除分类功能待开发 -->
+          <el-button
+            icon="el-icon-delete"
+            size="mini"
+            type="danger"
+            @click="deleteCate(scope.row.cat_id)"
             >删除
           </el-button>
         </template>
@@ -125,7 +130,6 @@
           <el-button type="primary" @click="editCate">确 定</el-button>
         </span>
       </el-dialog>
-      <!-- TODO 删除分类功能待开发 -->
     </el-card>
   </div>
 </template>
@@ -321,6 +325,23 @@ export default {
         this.$message.success("修改分类成功！");
         this.getcateList();
       });
+    },
+    // 删除分类
+    async deleteCate(id) {
+      const deleteConfirm = await this.$confirm(
+        "即将删除该分类，是否确认？",
+        "删除分类",
+        {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }
+      ).catch((err) => err);
+      if (deleteConfirm !== "confirm") return this.$message.info("取消删除！");
+      const { data: res } = await this.$http.delete(`categories/${id}`);
+      if (res.meta.status !== 200) return this.$message.error("删除失败！");
+      this.$message.success("删除分类成功！");
+      this.getcateList();
     },
   },
 };

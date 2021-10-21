@@ -124,7 +124,7 @@
     </el-dialog>
     <!-- 修改对话框 -->
     <el-dialog
-      title="修改"
+      :title="'修改' + titleText"
       :visible.sync="editDialogVisible"
       width="50%"
       @close="editDialogClosed"
