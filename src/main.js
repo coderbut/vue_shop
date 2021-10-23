@@ -15,6 +15,10 @@ import "quill/dist/quill.core.css"; // import styles
 import "quill/dist/quill.snow.css"; // for snow theme
 import "quill/dist/quill.bubble.css"; // for bubble theme
 
+import * as echarts from 'echarts'
+
+
+
 axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";
 // axios请求拦截器
 axios.interceptors.request.use(config => {
@@ -25,10 +29,12 @@ axios.interceptors.request.use(config => {
 });
 
 Vue.prototype.$http = axios;
+Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false;
 
 Vue.component("tree-table", TreeTable);
+
 
 // 全局注册
 Vue.use(VueQuillEditor);
