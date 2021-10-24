@@ -17,7 +17,9 @@ import "quill/dist/quill.bubble.css"; // for bubble theme
 
 import * as echarts from 'echarts'
 
-
+// 实现加载进度条
+import Nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";
 // axios请求拦截器
@@ -25,6 +27,16 @@ axios.interceptors.request.use(config => {
   // 判断访问页面权限
   config.headers.Authorization = window.sessionStorage.getItem("token");
   // 必须return config
+  return config;
+});
+// 在 request 拦截器中展示进度条
+axios.interceptors.request.use(config => {
+  Nprogress.start();
+  return config;
+});
+// 在 response 拦截器中关闭进度条
+axios.interceptors.response.use(config => {
+  Nprogress.done();
   return config;
 });
 

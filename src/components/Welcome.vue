@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Welcome</h3>
+    <h3>欢迎使用**电商管理系统</h3>
   </div>
 </template>
 
