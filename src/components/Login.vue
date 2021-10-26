@@ -2,7 +2,9 @@
   <div class="login_container">
     <div class="login_box">
       <!-- 头像 -->
-      <div class="avatar_box"><img alt="" src="../assets/logo.png"/></div>
+      <div class="avatar_box">
+        <img alt="" src="../assets/GitHub-Mark-Light-120px-plus.png" />
+      </div>
       <!-- 活动区域 -->
       <el-form
         ref="loginFormRef"
@@ -19,8 +21,7 @@
           ></el-input>
         </el-form-item>
         <!-- 密码 -->
-        <el-form-item prop="password"
-        >
+        <el-form-item prop="password">
           <el-input
             v-model="loginForm.password"
             prefix-icon="iconfont icon-lock_fill"
@@ -45,7 +46,7 @@ export default {
       // 登录表单的数据绑定对象
       loginForm: {
         username: "admin",
-        password: "123456"
+        password: "123456",
       },
       loginFormRules: {
         // 验证用户名
@@ -53,30 +54,30 @@ export default {
           {
             required: true,
             message: "请输入用户名",
-            trigger: "blur"
+            trigger: "blur",
           },
           {
             min: 3,
             max: 10,
             message: "长度在 3 到 10 个字符",
-            trigger: "blur"
-          }
+            trigger: "blur",
+          },
         ],
         // 验证密码
         password: [
           {
             required: true,
             message: "请输入登录密码",
-            trigger: "blur"
+            trigger: "blur",
           },
           {
             min: 6,
             max: 15,
             message: "长度在 6 到 15 个字符",
-            trigger: "blur"
-          }
-        ]
-      }
+            trigger: "blur",
+          },
+        ],
+      },
     };
   },
   methods: {
@@ -86,10 +87,10 @@ export default {
     },
     // 登录按钮
     login() {
-      this.$refs.loginFormRef.validate(async vaild => {
+      this.$refs.loginFormRef.validate(async (vaild) => {
         if (!vaild) return;
         // 解构返回值
-        const {data: res} = await this.$http.post("login", this.loginForm);
+        const { data: res } = await this.$http.post("login", this.loginForm);
         if (res.meta.status !== 200) return this.$message.error("登录失败");
         this.$message.success("登录成功");
         // console.log(res);
@@ -98,8 +99,8 @@ export default {
         // 跳转到/home页面中
         this.$router.push("/home");
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

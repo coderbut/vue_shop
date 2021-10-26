@@ -4,7 +4,7 @@
     <el-header>
       <div>
         <!-- logo -->
-        <img alt="" src="../assets/heima.png"/>
+        <img alt="" src="../assets/GitHub-Mark-Light-64px.png" />
         <span>电商后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
@@ -72,15 +72,15 @@ export default {
       // 字体对象
       iconsObj: {
         // 使用id来对应具体的图标,然后通过v-for自动渲染到页面中
-        "125": "iconfont icon-user",
-        "103": "iconfont icon-tijikongjian",
-        "101": "iconfont icon-shangpin",
-        "102": "iconfont icon-danju",
-        "145": "iconfont icon-baobiao"
+        125: "iconfont icon-user",
+        103: "iconfont icon-tijikongjian",
+        101: "iconfont icon-shangpin",
+        102: "iconfont icon-danju",
+        145: "iconfont icon-baobiao",
       },
       isCollapse: false,
       // 被激活的链接地址
-      activePath: ""
+      activePath: "",
     };
   },
   created() {
@@ -95,7 +95,7 @@ export default {
       this.$router.push("/login");
     },
     async getMenuList() {
-      const {data: res} = await this.$http.get("menus");
+      const { data: res } = await this.$http.get("menus");
       if (res.meta.status !== 200)
         return this.$message.console.error(res.meta.msg);
       // 将获取到的左侧菜单数据保存到meunlist中
@@ -109,8 +109,8 @@ export default {
       // 向sessionStorage中添加激活链接的地址
       window.sessionStorage.setItem("activePath", activePath);
       this.activePath = activePath;
-    }
-  }
+    },
+  },
 };
 </script>
 
