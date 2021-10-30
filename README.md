@@ -30,13 +30,13 @@ yarn build
 
 ## 登录页面
 
-<img src="..\readmePic\login.png"  />
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\login.png)
 
 > 使用简单的样式处理绘制的页面， 搭配 el-form 组件完成。主要用到了 css 中的定位知识，以及边框阴影，边框圆角；less 的使用；axios 发送数据请求并接受解构赋值，将登录成功后返回的 token 存储至 浏览器的 sessionStorage 中，并根据 token 值，在 axios 拦截器中添加用户授权。
 
 ## 用户管理
 
-![](..\readmePic\users.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\users.png)
 
 > 将 axios 请求到的值解构赋值到 data 中，并通过 el-table 组件将其渲染到页面中，使用 el-table 中的 template  分别渲染开关按钮和点击按钮。
 >
@@ -44,23 +44,23 @@ yarn build
 
 ## 角色列表
 
-![](..\readmePic\roles.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\roles.png)
 
 > 与用户列表大致相同，但使用了 element 中的展开列和 tag 实现对权限的直观展示，并为 tag 添加点击事件从而完成对相应权限的删除。
 
 ## 权限列表
 
-![](..\readmePic\power.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\power.png)
 
 > 简单的 axios 请求数据，并由 el-table 展示。
 
 ## 商品列表
 
-![](..\readmePic\goods.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\goods.png)
 
 ## 分类参数
 
-![](..\readmePic\params.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\params.png)
 
 > 使用级联选择器，通过判断返回数组长度从而限制只能选择三级分类。使用 tabs 实现动态参数和静态属性的切换。
 >
@@ -68,17 +68,17 @@ yarn build
 
 ## 商品分类
 
-![](..\readmePic\cate.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\cate.png)
 
 > 使用 `vue-table-with-tree-grid` 组件实现页面的树形展示。
 
 ## 订单列表
 
-![](..\readmePic\order.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\order.png)
 
 ## 数据报表
 
-![](..\readmePic\report.png)
+![](E:\WebstormProjects\vue\电商管理\vue_shop\readmePic\report.png)
 
 > 使用 echarts 将返回的报表数据渲染在页面上
 
