@@ -10,22 +10,10 @@
     <!-- 卡片 -->
     <el-card>
       <!-- 提示区域 -->
-      <el-alert
-        title="添加商品信息"
-        type="info"
-        show-icon
-        :closable="false"
-        center
-      >
-      </el-alert>
+      <el-alert title="添加商品信息" type="info" show-icon :closable="false" center></el-alert>
       <!-- 步骤条 -->
       <!-- activeIndex - 0 将字符串转换为数字传 finish-status 中 -->
-      <el-steps
-        :space="200"
-        :active="activeIndex - 0"
-        finish-status="success"
-        align-center
-      >
+      <el-steps :space="200" :active="activeIndex - 0" finish-status="success" align-center>
         <el-step title="基本信息"></el-step>
         <el-step title="商品参数"></el-step>
         <el-step title="商品属性"></el-step>
@@ -71,28 +59,15 @@
           </el-tab-pane>
           <el-tab-pane label="商品参数" name="1">
             <!-- 渲染表单 item 项 -->
-            <el-form-item
-              :label="item.attr_name"
-              v-for="item in manyTableData"
-              :key="item.attr_id"
-            >
+            <el-form-item :label="item.attr_name" v-for="item in manyTableData" :key="item.attr_id">
               <!-- 复选框 -->
               <el-checkbox-group v-model="item.attr_vals">
-                <el-checkbox
-                  v-for="(cb, i) in item.attr_vals"
-                  :label="cb"
-                  :key="i"
-                  border
-                ></el-checkbox>
+                <el-checkbox v-for="(cb, i) in item.attr_vals" :label="cb" :key="i" border></el-checkbox>
               </el-checkbox-group>
             </el-form-item>
           </el-tab-pane>
           <el-tab-pane label="商品属性" name="2">
-            <el-form-item
-              v-for="item in onlyTableData"
-              :key="item.attr_id"
-              :label="item.attr_name"
-            >
+            <el-form-item v-for="item in onlyTableData" :key="item.attr_id" :label="item.attr_name">
               <el-input v-model="item.attr_vals"></el-input>
             </el-form-item>
           </el-tab-pane>
@@ -112,9 +87,7 @@
           <el-tab-pane label="商品内容" name="4">
             <!-- 富文本编辑器 -->
             <quill-editor v-model="addForm.goods_introduce"></quill-editor>
-            <el-button type="primary" class="addBtn" @click="addGoods"
-              >添加商品</el-button
-            >
+            <el-button type="primary" class="addBtn" @click="addGoods">添加商品</el-button>
           </el-tab-pane>
         </el-tabs>
       </el-form>
@@ -243,7 +216,7 @@ export default {
         if (res.meta.status !== 200) {
           return this.$message.error('获取商品参数失败')
         }
-        res.data.forEach((item) => {
+        res.data.forEach(item => {
           item.attr_vals =
             item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
         })
@@ -287,19 +260,19 @@ export default {
        * 使用 splice 方法, 将图片信息对象, 从 pics数组中移除
        */
       const filePath = file.response.data.tmp_path
-      const index = this.addForm.pics.findIndex((x) => x.pic === filePath)
+      const index = this.addForm.pics.findIndex(x => x.pic === filePath)
       this.addForm.pics.splice(index, 1)
       console.log(this.addForm)
     },
     addGoods () {
-      this.$refs.addFormRef.validate(async (valid) => {
+      this.$refs.addFormRef.validate(async valid => {
         if (!valid) return this.$message.error('请填写必要的表单项')
         // 级联选择器必须要绑定一个数组, 而上传参数的时候需要上传一个字符串, 所以在上传之前需要使用深拷贝复制一份与级联选择器互不干扰的对象进行操作
         const form = _.cloneDeep(this.addForm)
         // 处理分类参数, 将数组转换成字符串
         form.goods_cat = form.goods_cat.join(',')
         // 处理动态参数
-        this.manyTableData.forEach((item) => {
+        this.manyTableData.forEach(item => {
           const newInfo = {
             attr_id: item.attr_id,
             attr_value: item.attr_vals.join(' ')
@@ -307,7 +280,7 @@ export default {
           this.addForm.attrs.push(newInfo)
         })
         // 处理静态属性
-        this.onlyTableData.forEach((item) => {
+        this.onlyTableData.forEach(item => {
           const newInfo = {
             attr_id: item.attr_id,
             attr_value: item.attr_vals

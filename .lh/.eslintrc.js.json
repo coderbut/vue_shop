@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".eslintrc.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1638628974271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1638628974271,
+            "name": "Commit-0",
+            "content": "module.exports = {\r\n  root: true,\r\n  env: {\r\n    node: true\r\n  },\r\n  extends: [\"plugin:vue/essential\", \"@vue/standard\"],\r\n  parserOptions: {\r\n    parser: \"babel-eslint\"\r\n  },\r\n  rules: {\r\n    \"no-console\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\",\r\n    \"no-debugger\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\"\r\n  }\r\n};\r\n"
+        }
+    ]
+}
