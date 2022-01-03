@@ -8,21 +8,21 @@ import Rights from "../components/power/Rights";
 import Roles from "../components/power/Roles";
 import Categories from "../components/goods/Categories";
 import Params from "../components/goods/Params";
-import GoodsList from "../components/goods/List"
-import Add from '../components/goods/Add.vue'
-import Order from '../components/order/Order'
-import Report from '@/components/report/Report'
+import GoodsList from "../components/goods/List";
+import Add from "../components/goods/Add.vue";
+import Order from "../components/order/Order";
+import Report from "@/components/report/Report";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/login",
   },
   {
     path: "/login",
-    component: Login
+    component: Login,
   },
   {
     path: "/home",
@@ -33,52 +33,52 @@ const routes = [
     children: [
       {
         path: "/welcome",
-        component: Welcome
+        component: Welcome,
       },
       {
         path: "/users",
-        component: Users
+        component: Users,
       },
       // 权限管理页面
       {
         path: "/rights",
-        component: Rights
+        component: Rights,
       },
       {
         path: "/roles",
-        component: Roles
+        component: Roles,
       },
       // 商品分类页面
       {
         path: "/categories",
-        component: Categories
+        component: Categories,
       },
       {
         path: "/params",
-        component: Params
+        component: Params,
       },
       {
         path: "/goods",
-        component: GoodsList
+        component: GoodsList,
       },
       {
         path: "/goods/add",
-        component: Add
+        component: Add,
       },
       {
-        path: '/orders',
-        component: Order
+        path: "/orders",
+        component: Order,
       },
       {
-        path: '/reports',
-        component: Report
-      }
-    ]
-  }
+        path: "/reports",
+        component: Report,
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
 });
 // 导航守卫，不允许用户直接访问/home
 router.beforeEach((to, from, next) => {

@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1638628836360,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1638635395062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,4 @@\n // vue.config.js\r\n module.exports = {\r\n-  devServer: {\r\n-    overlay: {\r\n-      warnings: false, // 不显示警告\r\n-      // eslint-disable-next-line no-tabs\r\n-      errors: false // 不显示错误\r\n-    }\r\n-  },\r\n   lintOnSave: false // 关闭eslint检查\r\n };\r\n"
                 }
             ],
             "date": 1638628836360,

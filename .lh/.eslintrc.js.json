@@ -3,11 +3,27 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1638628974271,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1638634978809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,8 @@\n     parser: \"babel-eslint\"\r\n   },\r\n   rules: {\r\n     \"no-console\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\",\r\n-    \"no-debugger\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\"\r\n+    \"no-debugger\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\",\r\n+    semi: true\r\n   }\r\n };\r\n"
+                },
+                {
+                    "date": 1638635419389,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   root: true,\r\n   env: {\r\n     node: true\r\n   },\r\n-  extends: [\"plugin:vue/essential\", \"@vue/standard\"],\r\n+  extends: [\"plugin:vue/essential\", \"@vue/standard\", \"prettier\"],\r\n   parserOptions: {\r\n     parser: \"babel-eslint\"\r\n   },\r\n   rules: {\r\n"
+                },
+                {
+                    "date": 1638635438935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n   env: {\r\n     node: true\r\n   },\r\n   extends: [\"plugin:vue/essential\", \"@vue/standard\", \"prettier\"],\r\n+  plugins: [\"prettier\"],\r\n   parserOptions: {\r\n     parser: \"babel-eslint\"\r\n   },\r\n   rules: {\r\n"
+                },
+                {
+                    "date": 1638635455162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n   parserOptions: {\r\n     parser: \"babel-eslint\"\r\n   },\r\n   rules: {\r\n+    \"prettier/prettier\": \"error\",\r\n     \"no-console\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\",\r\n     \"no-debugger\": process.env.NODE_ENV === \"production\" ? \"warn\" : \"off\",\r\n     semi: true\r\n   }\r\n"
                 }
             ],
             "date": 1638628974271,

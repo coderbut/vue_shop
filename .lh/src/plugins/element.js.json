@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/plugins/element.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1638635765437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1638635765437,
+            "name": "Commit-0",
+            "content": "import Vue from \"vue\";\r\nimport {\r\n  Alert,\r\n  Aside,\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  Button,\r\n  Card,\r\n  Cascader,\r\n  Col,\r\n  Container,\r\n  Dialog,\r\n  Form,\r\n  FormItem,\r\n  Header,\r\n  Input,\r\n  Main,\r\n  Menu,\r\n  MenuItem,\r\n  MenuItemGroup,\r\n  Message,\r\n  MessageBox,\r\n  Option,\r\n  Pagination,\r\n  Row,\r\n  Select,\r\n  Submenu,\r\n  Switch,\r\n  Table,\r\n  TableColumn,\r\n  TabPane,\r\n  Tabs,\r\n  Tag,\r\n  Tooltip,\r\n  Tree,\r\n  Steps,\r\n  Step,\r\n  CheckboxGroup,\r\n  Checkbox,\r\n  Upload,\r\n  Timeline,\r\n  TimelineItem\r\n} from \"element-ui\";\r\n\r\nVue.use(Button);\r\nVue.use(Form);\r\nVue.use(FormItem);\r\nVue.use(Input);\r\nVue.use(Container);\r\nVue.use(Header);\r\nVue.use(Aside);\r\nVue.use(Main);\r\nVue.use(Menu);\r\nVue.use(Submenu);\r\nVue.use(MenuItemGroup);\r\nVue.use(MenuItem);\r\nVue.use(Breadcrumb);\r\nVue.use(BreadcrumbItem);\r\nVue.use(Card);\r\nVue.use(Col);\r\nVue.use(Row);\r\nVue.use(Table);\r\nVue.use(TableColumn);\r\nVue.use(Switch);\r\nVue.use(Tooltip);\r\nVue.use(Pagination);\r\nVue.use(Dialog);\r\nVue.use(Tag);\r\nVue.use(Tree);\r\nVue.use(Select);\r\nVue.use(Option);\r\nVue.use(Cascader);\r\nVue.use(Alert);\r\nVue.use(Tabs);\r\nVue.use(TabPane);\r\nVue.use(Steps);\r\nVue.use(Step);\r\nVue.use(CheckboxGroup);\r\nVue.use(Checkbox);\r\nVue.use(Upload);\r\nVue.use(Timeline);\r\nVue.use(TimelineItem);\r\n\r\n// 挂载到Vue原型上\r\nVue.prototype.$message = Message;\r\n\r\nVue.prototype.$confirm = MessageBox.confirm;\r\n"
+        }
+    ]
+}
